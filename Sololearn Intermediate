@@ -1,0 +1,141 @@
+#Dictionaries
+car = {
+    'brand':'BMW',
+    'year': 2018,
+    'color': 'red',
+    'mileage': 15000
+}
+vvod = input()
+print(car[vvod])
+
+#Dictionary Function
+data = {
+    'Singapore': 1,
+    'Ireland': 6,
+    'United Kingdom': 7,
+    'Germany': 27,
+    'Armenia': 34,
+    'United States': 17,
+    'Canada': 9,
+    'Italy': 74
+}
+a = input()
+print(data.get(a,"Not found"))
+
+#Tuples
+contacts = [
+    ('James', 42),
+    ('Amy', 24),
+    ('John', 31),
+    ('Amanda', 63),
+    ('Bob', 18)
+]
+name = input()
+a = 0
+for x in contacts:
+	if name in x:
+		print(str(x[0]) + " is " + str(x[1]))
+		a +=1
+		break
+if a == 0:
+	print("Not Found")
+ 
+ #Tuples Unpacking
+ def calc(x):
+    return(x*4, x*x)
+
+side = int(input())
+p, a = calc(side)
+
+print("Perimeter: " + str(p))
+print("Area: " + str(a))
+
+#Sets
+skills = {'Python', 'HTML', 'SQL', 'C++', 'Java', 'Scala'}
+job_skills = {'HTML', 'CSS', 'JS', 'C#', 'NodeJS'}
+print(list(skills & job_skills)[0])
+
+#List Comperehensions
+word = input()
+aoe = ("a", "i", "o", "e", "u")
+a = [i for i in word if i not in aoe]
+print(a)
+
+#Letter Counter
+text = input()
+dict = {}
+num = 0
+count = 1
+for x in text:
+	if x not in dict:
+		dict[x] = count
+	elif x in dict:
+		dict[x] += count
+print(dict)
+
+#Lambdas
+price = int(input())
+perc = int(input())
+res = (lambda x,y: x*y/100)(price, perc)
+print(res)
+
+#Map & Filter 
+salaries = [2000, 1800, 3100, 4400, 1500]
+bonus = int(input())
+salaries = list(map(lambda x : x + bonus, salaries))
+print(salaries)
+
+#Generators
+def isPrime(x):
+    if x < 2:
+        return False
+    elif x == 2:
+        return True  
+    for n in range(2, x):
+        if x % n ==0:
+            return False
+    return True
+def primeGenerator(a, b):
+    for i in range(a, b):
+    	if isPrime(i):
+    		yield i 	
+f = int(input())
+t = int(input())
+print(list(primeGenerator(f, t)))
+
+#Decorators
+def decor(func):
+		def wrap(num):
+			print("***")
+			func(num)
+			print("***")
+			print("END OF PAGE")
+		return wrap
+@decor
+def invoice(num):
+    print("INVOICE #" +num)
+invoice(input())
+
+#Recursion
+def convert(num):
+	if num == 0:
+		return 0
+	return (num % 2 + 10 * convert(num // 2))
+a = int(input())
+print(convert(a))
+
+#*args and **kwargs
+def my_min(*args):
+    return min(args)
+print(my_min(8, 13, 4, 42, 120, 7))
+
+#Spelling Backwards
+def spell(txt):
+    if len(txt) == 0:
+    	return txt
+    else:
+    	return spell(txt[1:]) + txt[0]
+txt = input()
+
+
+print(spell(txt))
