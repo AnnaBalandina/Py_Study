@@ -1,0 +1,26 @@
+import turtle
+window = turtle.Screen()
+window.bgcolor('grey')
+tp = turtle.Turtle()
+tp.pensize(2)
+
+
+def polygon(n, size):
+    if n > 2:
+        angle = 360/n
+        
+        for n in range(0, n):
+            tp.left(angle)
+            tp.forward(size)
+
+tp.speed(200)
+colors = ['red', 'orange', 'cyan', 'yellow', 'green']
+size = 40
+
+for i in range (0, 80):
+    tp.color(colors[i % 5])
+    polygon(4, size)
+    tp.right(5)
+    size = size + 3
+        
+window.mainloop()
